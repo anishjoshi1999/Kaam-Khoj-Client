@@ -1,40 +1,42 @@
 <%- include('./partials/header.ejs')  %>
-<%- include('./partials/navbar.ejs') %>
+
 <div style="margin-top: 80px;">
-    <div class="vh-100">
-        <h2 class="text-center"><%=jobsData.name%>: <%=jobsData.totalAvailableJobs%></h2>
-        <table class="table table-bordered table-hover">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Job Name</th>
-                    <th scope="col">Desired Salary</th>
-                    <th scope="col">Job Description</th>
-                    <th scope="col">Employer Name</th>
-                    <th scope="col">Contact Number</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Created Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% if (Array.isArray(jobsData.jobs) && jobsData.jobs.length > 0) { %>
-                    <% jobsData.jobs.forEach((job) => { %>
-                        <tr>
-                            <td><%= job.jobName %></td>
-                            <td><%= job.salary %></td>
-                            <td><%= job.description %></td>
-                            <td><%= job.ownerName %></td>
-                            <td><%= job.contactNumber %></td>
-                            <td><%= job.location %></td>
-                            <td><%= job.createdTime %></td>
-                        </tr>
-                    <% }) %>
-                <% } else { %>
+    <div class="container vh-100">
+        <h2 class="text-center"><%= jobsData.name %>: <%= jobsData.totalAvailableJobs %></h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
                     <tr>
-                        <td colspan="7" class="text-center">No data available</td>
+                        <th scope="col">Job Name</th>
+                        <th scope="col">Desired Salary</th>
+                        <th scope="col">Job Description</th>
+                        <th scope="col">Employer Name</th>
+                        <th scope="col">Contact Number</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Created Time</th>
                     </tr>
-                <% } %>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <% if (Array.isArray(jobsData.jobs) && jobsData.jobs.length > 0) { %>
+                        <% jobsData.jobs.forEach((job) => { %>
+                            <tr>
+                                <td><%= job.jobName %></td>
+                                <td><%= job.salary %></td>
+                                <td><%= job.description %></td>
+                                <td><%= job.ownerName %></td>
+                                <td><%= job.contactNumber %></td>
+                                <td><%= job.location %></td>
+                                <td><%= job.createdTime %></td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="7" class="text-center">No data available</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
